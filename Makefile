@@ -1,11 +1,19 @@
 BASH = /usr/bin/bash
-SHELL := $(BASH)
 
-install = install -D --mode=$(1) <(sed -e "s|@bash@|$(BASH)|g" $(2)) $(DESTDIR)$(3)/$(2:.in=)
+FILES = xdaemon xlogin x@.service xlogin@.service
+
+all: $(FILES)
 
 .PHONY: install
-install:
-	$(call install,755,x-daemon.in,/usr/bin)
-	$(call install,644,x@.service,/usr/lib/systemd/system)
-	$(call install,644,xlogin@.service.in,/usr/lib/systemd/system)
-	$(call install,755,25-xlogin.sh.in,/etc/X11/xinit/xinitrc.d)
+install: all
+	install -D --mode=755 xdaemon $(DESTDIR)/usr/bin/xdaemon
+	install -D --mode=755 xlogin $(DESTDIR)/etc/X11/xinig/xinitrc.d/25-xlogin
+	install -D --mode=644 x@.service $(DESTDIR)/usr/lib/systemd/system/x@.service
+	install -D --mode=644 xlogin@.service $(DESTDIR)/usr/lib/systemd/system/xlogin@.service
+
+clean:
+	rm -f $(FILES)
+
+% : %.in
+	sed -e "s|@bash@|$(BASH)|g" $< > $@
+
