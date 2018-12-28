@@ -1,4 +1,4 @@
-BASH = /usr/bin/bash
+BASH = /bin/bash
 
 FILES = xdaemon xlogin x@.service xlogin@.service
 
