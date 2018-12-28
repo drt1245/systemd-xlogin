@@ -15,7 +15,7 @@ installs possible. Empty by default.
 
 BASH
 ----
-The path to the Bash executable used by xlogin. Defaults to /usr/bin/bash.
+The path to the Bash executable used by xlogin. Defaults to /bin/bash.
 
 SHELL
 -----
