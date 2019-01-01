@@ -6,4 +6,4 @@ StopWhenUnneeded=true
 
 [Service]
 Type=forking
-ExecStart=/usr/bin/xdaemon -noreset %I
+ExecStart=/usr/local/bin/xdaemon -noreset %I
